@@ -3,19 +3,19 @@ package v0
 import (
 	"fmt"
 
-	"github.com/irisnet/irishub/modules/bank"
-	distr "github.com/irisnet/irishub/modules/distribution"
-	"github.com/irisnet/irishub/modules/stake"
+	bankInvariant "github.com/irisnet/irishub/modules/bank/invariants"
+	distrInvariant "github.com/irisnet/irishub/modules/distribution/invariants"
+	stakeInvariant "github.com/irisnet/irishub/modules/stake/invariants"
 	sdk "github.com/irisnet/irishub/types"
 )
 
 func (p *ProtocolV0) runtimeInvariants() []sdk.Invariant {
 	return []sdk.Invariant{
-		bank.NonnegativeBalanceInvariant(p.accountMapper),
-		distr.ValAccumInvariants(p.distrKeeper, p.StakeKeeper),
-		stake.SupplyInvariants(p.bankKeeper, p.StakeKeeper,
+		bankInvariant.NonnegativeBalanceInvariant(p.accountMapper),
+		distrInvariant.ValAccumInvariants(p.distrKeeper, p.StakeKeeper),
+		stakeInvariant.SupplyInvariants(p.bankKeeper, p.StakeKeeper,
 			p.feeKeeper, p.distrKeeper, p.accountMapper),
-		stake.PositivePowerInvariant(p.StakeKeeper),
+		stakeInvariant.PositivePowerInvariant(p.StakeKeeper),
 	}
 }
 

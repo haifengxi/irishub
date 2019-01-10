@@ -15,6 +15,7 @@ import (
 	"github.com/irisnet/irishub/modules/mock/simulation"
 	distr "github.com/irisnet/irishub/modules/distribution"
 	"github.com/irisnet/irishub/modules/guardian"
+	"github.com/irisnet/irishub/modules/gov/invariants"
 )
 
 // TestGovWithRandomMessages
@@ -111,7 +112,7 @@ func TestGovWithRandomMessages(t *testing.T) {
 		}, []simulation.RandSetup{
 			setup,
 		}, []simulation.Invariant{
-			gov.AllInvariants(),
+			invariants.AllInvariants(),
 		}, 10, 100,
 		false,
 	)

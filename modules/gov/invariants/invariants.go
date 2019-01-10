@@ -1,4 +1,4 @@
-package gov
+package invariants
 
 import (
 	sdk "github.com/irisnet/irishub/types"

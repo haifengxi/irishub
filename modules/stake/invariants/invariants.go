@@ -1,4 +1,4 @@
-package stake
+package invariants
 
 import (
 	"bytes"

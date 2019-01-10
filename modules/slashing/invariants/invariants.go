@@ -1,4 +1,4 @@
-package slashing
+package invariants
 
 import (
 	"github.com/irisnet/irishub/modules/mock/simulation"

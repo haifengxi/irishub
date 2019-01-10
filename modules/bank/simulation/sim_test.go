@@ -10,6 +10,7 @@ import (
 	"github.com/irisnet/irishub/modules/mock"
 	"github.com/irisnet/irishub/modules/mock/simulation"
 	stakeTypes "github.com/irisnet/irishub/modules/stake/types"
+	"github.com/irisnet/irishub/modules/bank/invariants"
 )
 
 func TestBankWithRandomMessages(t *testing.T) {
@@ -38,8 +39,8 @@ func TestBankWithRandomMessages(t *testing.T) {
 		},
 		[]simulation.RandSetup{},
 		[]simulation.Invariant{
-			bank.NonnegativeBalanceInvariant(mapper),
-			bank.TotalCoinsInvariant(mapper, func() sdk.Coins { return mapp.TotalCoinsSupply }),
+			invariants.NonnegativeBalanceInvariant(mapper),
+			invariants.TotalCoinsInvariant(mapper, func() sdk.Coins { return mapp.TotalCoinsSupply }),
 		},
 		30, 60,
 		false,
